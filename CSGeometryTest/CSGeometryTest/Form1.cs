@@ -73,6 +73,10 @@ namespace CSGeometryTest
 			this.mPointDic[PointID.GetAngle_1] = new System.Windows.Point(500, 100);
 			this.mPointDic[PointID.GetAngle_2] = new System.Windows.Point(200, 200);
 			this.mPointDic[PointID.GetAngle_3] = new System.Windows.Point(300, 500);
+
+			this.trkHSVR.Value = 100;
+			this.trkHSVG.Value = 100;
+			this.trkHSVB.Value = 100;
 		}
 
 		private string GetPointString(PointID pID)
@@ -135,8 +139,8 @@ namespace CSGeometryTest
 			double y = pControl.ClientSize.Height - 1 - e.Location.Y;
 
 			if ((Control.ModifierKeys & Keys.Shift) == Keys.Shift) {
-				x = Math.Round(x/10, MidpointRounding.AwayFromZero)*10;
-				y = Math.Round(y/10, MidpointRounding.AwayFromZero)*10;
+				x = Math.Round(x / 10, MidpointRounding.AwayFromZero) * 10;
+				y = Math.Round(y / 10, MidpointRounding.AwayFromZero) * 10;
 			}
 
 			this.mPointDic[pID] = new System.Windows.Point(x, y);
@@ -344,6 +348,76 @@ namespace CSGeometryTest
 		private void pnlGetAngle_MouseDown(object sender, MouseEventArgs e)
 		{
 			this.MouseDownSub(e, this.pnlGetAngle, PointID.GetAngle_3);
+		}
+		#endregion
+
+		#region HSV
+		private void pnlHSV_Paint(object sender, PaintEventArgs e)
+		{
+			int centerX = this.pnlHSV.ClientSize.Width / 2;
+			int centerY = this.pnlHSV.ClientSize.Height / 2;
+
+			double w = this.pnlHSV.ClientSize.Width / 360;
+		}
+
+		bool blHSVEventSkip = false;
+
+		private void trkHSVRGB_ValueChanged(object sender, EventArgs e)
+		{
+			this.txtHSVR.Text = (this.trkHSVR.Value / 100.0).ToString();
+			this.txtHSVG.Text = (this.trkHSVG.Value / 100.0).ToString();
+			this.txtHSVB.Text = (this.trkHSVB.Value / 100.0).ToString();
+
+			if (blHSVEventSkip) {
+				return;
+			}
+
+			blHSVEventSkip = true;
+
+			CSGeometries.ColorModels.ColorD rgb = new CSGeometries.ColorModels.ColorD(
+															this.trkHSVR.Value / 100.0,
+															this.trkHSVG.Value / 100.0,
+															this.trkHSVB.Value / 100.0);
+
+			CSGeometries.ColorModels.HSV hsv = CSGeometries.ColorModels.HSV.FromColorD(rgb);
+
+			this.trkHSVH.Value = (int)hsv.H;
+			this.trkHSVS.Value = (int)(hsv.S * 100);
+			this.trkHSVV.Value = (int)(hsv.V * 100);
+
+			this.lblHSVBox.BackColor = Color.FromArgb(this.trkHSVR.Value * 255 / 100,
+													  this.trkHSVG.Value * 255 / 100,
+													  this.trkHSVB.Value * 255 / 100);
+			blHSVEventSkip = false;
+		}
+
+		private void trkHSVHSV_ValueChanged(object sender, EventArgs e)
+		{
+			this.txtHSVH.Text = (this.trkHSVH.Value).ToString();
+			this.txtHSVS.Text = (this.trkHSVS.Value / 100.0).ToString();
+			this.txtHSVV.Text = (this.trkHSVV.Value / 100.0).ToString();
+
+			if (blHSVEventSkip) {
+				return;
+			}
+
+			blHSVEventSkip = true;
+
+			CSGeometries.ColorModels.HSV hsv = new CSGeometries.ColorModels.HSV(
+															this.trkHSVH.Value,
+															this.trkHSVS.Value / 100.0,
+															this.trkHSVV.Value / 100.0);
+
+			CSGeometries.ColorModels.ColorD rgb = CSGeometries.ColorModels.ColorD.FromHSV(hsv);
+
+			this.trkHSVR.Value = (int)(rgb.R * 100);
+			this.trkHSVG.Value = (int)(rgb.G * 100);
+			this.trkHSVB.Value = (int)(rgb.B * 100);
+
+			this.lblHSVBox.BackColor = Color.FromArgb(this.trkHSVR.Value * 255 / 100,
+													  this.trkHSVG.Value * 255 / 100,
+													  this.trkHSVB.Value * 255 / 100);
+			blHSVEventSkip = false;
 		}
 		#endregion
 	}

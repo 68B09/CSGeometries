@@ -1,7 +1,7 @@
 ﻿# CSGeometries
 C#用幾何計算クラス
 ======================
-線分の長さや線交差座標等を求めるための幾何計算クラスです。
+線分の長さや線交差座標等を求めるための幾何計算クラスや、RGB-HSV相互変換などのカラーモデル変換クラスを実装しています。
 
 言語・開発環境
 ------
@@ -21,11 +21,19 @@ CSGeometryTest が簡易テスト用のドライバになっていますので�
 ２、座標は、Double型を使用する System.Windows.Point構造体(WindowsBase.dll内) を使用しています  
 　　2D用の Point構造体 と名前が重複していることにご注意ください。  
 ３、条件を満たさないパラメータを与えると不正な結果を返すメソッドもあることに注意してください  
-４、CSGeometries.Geometry のメソッドを使用した処理は、後に CSGeometries.Algorithm名前空間 に実装するかもしれません。  
+４、ColorDやHSV構造体の多くのメンバ変数が取る値が0.0～1.0であることに注意が必要です。
 
 ライセンス
 ------
-ライセンスを適用するファイルは CSGeometries.cs のみです。  
+ライセンスを適用するファイルにはライセンスについての記述があります。
 The MIT License (MIT)  
 Copyright (c) 2016 ZZO  
 see also 'LICENSE' file
+
+履歴
+-----
+2016/5/22 ZZO(68B09)  
+ColorModels追加。  
+  
+2016/5/15 ZZO(68B09)  
+First release.

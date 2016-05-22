@@ -35,9 +35,12 @@
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ColorModels\ColorD.cs" />
+    <Compile Include="ColorModels\HSV.cs" />
     <Compile Include="CSGeometries.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -36,11 +36,40 @@
 			this.pnlGetCrossPoint = new System.Windows.Forms.Panel();
 			this.GetAngle = new System.Windows.Forms.TabPage();
 			this.pnlGetAngle = new System.Windows.Forms.Panel();
+			this.HSV = new System.Windows.Forms.TabPage();
+			this.pnlHSV = new System.Windows.Forms.Panel();
+			this.lblHSVBox = new System.Windows.Forms.Label();
+			this.txtHSVV = new System.Windows.Forms.TextBox();
+			this.label6 = new System.Windows.Forms.Label();
+			this.trkHSVV = new System.Windows.Forms.TrackBar();
+			this.txtHSVS = new System.Windows.Forms.TextBox();
+			this.label5 = new System.Windows.Forms.Label();
+			this.trkHSVS = new System.Windows.Forms.TrackBar();
+			this.txtHSVH = new System.Windows.Forms.TextBox();
+			this.label4 = new System.Windows.Forms.Label();
+			this.trkHSVH = new System.Windows.Forms.TrackBar();
+			this.txtHSVB = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.trkHSVB = new System.Windows.Forms.TrackBar();
+			this.txtHSVG = new System.Windows.Forms.TextBox();
+			this.label2 = new System.Windows.Forms.Label();
+			this.trkHSVG = new System.Windows.Forms.TrackBar();
+			this.txtHSVR = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.trkHSVR = new System.Windows.Forms.TrackBar();
 			this.tab.SuspendLayout();
 			this.GetLength.SuspendLayout();
 			this.GetPointLR.SuspendLayout();
 			this.GetCrossPoint.SuspendLayout();
 			this.GetAngle.SuspendLayout();
+			this.HSV.SuspendLayout();
+			this.pnlHSV.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVV)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVS)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVH)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVB)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVG)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVR)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// tab
@@ -52,6 +81,7 @@
 			this.tab.Controls.Add(this.GetPointLR);
 			this.tab.Controls.Add(this.GetCrossPoint);
 			this.tab.Controls.Add(this.GetAngle);
+			this.tab.Controls.Add(this.HSV);
 			this.tab.Location = new System.Drawing.Point(12, 12);
 			this.tab.Name = "tab";
 			this.tab.SelectedIndex = 0;
@@ -139,6 +169,220 @@
 			this.pnlGetAngle.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlGetAngle_Paint);
 			this.pnlGetAngle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlGetAngle_MouseDown);
 			// 
+			// HSV
+			// 
+			this.HSV.Controls.Add(this.pnlHSV);
+			this.HSV.Location = new System.Drawing.Point(4, 22);
+			this.HSV.Name = "HSV";
+			this.HSV.Size = new System.Drawing.Size(713, 622);
+			this.HSV.TabIndex = 6;
+			this.HSV.Text = "HSV";
+			this.HSV.UseVisualStyleBackColor = true;
+			// 
+			// pnlHSV
+			// 
+			this.pnlHSV.Controls.Add(this.lblHSVBox);
+			this.pnlHSV.Controls.Add(this.txtHSVV);
+			this.pnlHSV.Controls.Add(this.label6);
+			this.pnlHSV.Controls.Add(this.trkHSVV);
+			this.pnlHSV.Controls.Add(this.txtHSVS);
+			this.pnlHSV.Controls.Add(this.label5);
+			this.pnlHSV.Controls.Add(this.trkHSVS);
+			this.pnlHSV.Controls.Add(this.txtHSVH);
+			this.pnlHSV.Controls.Add(this.label4);
+			this.pnlHSV.Controls.Add(this.trkHSVH);
+			this.pnlHSV.Controls.Add(this.txtHSVB);
+			this.pnlHSV.Controls.Add(this.label3);
+			this.pnlHSV.Controls.Add(this.trkHSVB);
+			this.pnlHSV.Controls.Add(this.txtHSVG);
+			this.pnlHSV.Controls.Add(this.label2);
+			this.pnlHSV.Controls.Add(this.trkHSVG);
+			this.pnlHSV.Controls.Add(this.txtHSVR);
+			this.pnlHSV.Controls.Add(this.label1);
+			this.pnlHSV.Controls.Add(this.trkHSVR);
+			this.pnlHSV.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnlHSV.Location = new System.Drawing.Point(0, 0);
+			this.pnlHSV.Name = "pnlHSV";
+			this.pnlHSV.Size = new System.Drawing.Size(713, 622);
+			this.pnlHSV.TabIndex = 0;
+			this.pnlHSV.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlHSV_Paint);
+			// 
+			// lblHSVBox
+			// 
+			this.lblHSVBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+			this.lblHSVBox.Location = new System.Drawing.Point(218, 390);
+			this.lblHSVBox.Name = "lblHSVBox";
+			this.lblHSVBox.Size = new System.Drawing.Size(200, 200);
+			this.lblHSVBox.TabIndex = 18;
+			// 
+			// txtHSVV
+			// 
+			this.txtHSVV.Location = new System.Drawing.Point(660, 300);
+			this.txtHSVV.MaxLength = 3;
+			this.txtHSVV.Name = "txtHSVV";
+			this.txtHSVV.Size = new System.Drawing.Size(50, 19);
+			this.txtHSVV.TabIndex = 17;
+			this.txtHSVV.WordWrap = false;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.Location = new System.Drawing.Point(3, 300);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(13, 12);
+			this.label6.TabIndex = 16;
+			this.label6.Text = "V";
+			// 
+			// trkHSVV
+			// 
+			this.trkHSVV.Location = new System.Drawing.Point(22, 300);
+			this.trkHSVV.Maximum = 100;
+			this.trkHSVV.Name = "trkHSVV";
+			this.trkHSVV.Size = new System.Drawing.Size(632, 45);
+			this.trkHSVV.TabIndex = 15;
+			this.trkHSVV.TickFrequency = 10;
+			this.trkHSVV.ValueChanged += new System.EventHandler(this.trkHSVHSV_ValueChanged);
+			// 
+			// txtHSVS
+			// 
+			this.txtHSVS.Location = new System.Drawing.Point(660, 249);
+			this.txtHSVS.MaxLength = 3;
+			this.txtHSVS.Name = "txtHSVS";
+			this.txtHSVS.Size = new System.Drawing.Size(50, 19);
+			this.txtHSVS.TabIndex = 14;
+			this.txtHSVS.WordWrap = false;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.Location = new System.Drawing.Point(3, 249);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(12, 12);
+			this.label5.TabIndex = 13;
+			this.label5.Text = "S";
+			// 
+			// trkHSVS
+			// 
+			this.trkHSVS.Location = new System.Drawing.Point(22, 249);
+			this.trkHSVS.Maximum = 100;
+			this.trkHSVS.Name = "trkHSVS";
+			this.trkHSVS.Size = new System.Drawing.Size(632, 45);
+			this.trkHSVS.TabIndex = 12;
+			this.trkHSVS.TickFrequency = 10;
+			this.trkHSVS.ValueChanged += new System.EventHandler(this.trkHSVHSV_ValueChanged);
+			// 
+			// txtHSVH
+			// 
+			this.txtHSVH.Location = new System.Drawing.Point(660, 198);
+			this.txtHSVH.MaxLength = 3;
+			this.txtHSVH.Name = "txtHSVH";
+			this.txtHSVH.Size = new System.Drawing.Size(50, 19);
+			this.txtHSVH.TabIndex = 11;
+			this.txtHSVH.WordWrap = false;
+			// 
+			// label4
+			// 
+			this.label4.AutoSize = true;
+			this.label4.Location = new System.Drawing.Point(3, 198);
+			this.label4.Name = "label4";
+			this.label4.Size = new System.Drawing.Size(13, 12);
+			this.label4.TabIndex = 10;
+			this.label4.Text = "H";
+			// 
+			// trkHSVH
+			// 
+			this.trkHSVH.Location = new System.Drawing.Point(22, 198);
+			this.trkHSVH.Maximum = 359;
+			this.trkHSVH.Name = "trkHSVH";
+			this.trkHSVH.Size = new System.Drawing.Size(632, 45);
+			this.trkHSVH.TabIndex = 9;
+			this.trkHSVH.TickFrequency = 10;
+			this.trkHSVH.ValueChanged += new System.EventHandler(this.trkHSVHSV_ValueChanged);
+			// 
+			// txtHSVB
+			// 
+			this.txtHSVB.Location = new System.Drawing.Point(660, 105);
+			this.txtHSVB.MaxLength = 3;
+			this.txtHSVB.Name = "txtHSVB";
+			this.txtHSVB.Size = new System.Drawing.Size(50, 19);
+			this.txtHSVB.TabIndex = 8;
+			this.txtHSVB.WordWrap = false;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(3, 105);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(13, 12);
+			this.label3.TabIndex = 7;
+			this.label3.Text = "B";
+			// 
+			// trkHSVB
+			// 
+			this.trkHSVB.Location = new System.Drawing.Point(22, 105);
+			this.trkHSVB.Maximum = 100;
+			this.trkHSVB.Name = "trkHSVB";
+			this.trkHSVB.Size = new System.Drawing.Size(632, 45);
+			this.trkHSVB.TabIndex = 6;
+			this.trkHSVB.TickFrequency = 10;
+			this.trkHSVB.ValueChanged += new System.EventHandler(this.trkHSVRGB_ValueChanged);
+			// 
+			// txtHSVG
+			// 
+			this.txtHSVG.Location = new System.Drawing.Point(660, 54);
+			this.txtHSVG.MaxLength = 3;
+			this.txtHSVG.Name = "txtHSVG";
+			this.txtHSVG.Size = new System.Drawing.Size(50, 19);
+			this.txtHSVG.TabIndex = 5;
+			this.txtHSVG.WordWrap = false;
+			// 
+			// label2
+			// 
+			this.label2.AutoSize = true;
+			this.label2.Location = new System.Drawing.Point(3, 54);
+			this.label2.Name = "label2";
+			this.label2.Size = new System.Drawing.Size(13, 12);
+			this.label2.TabIndex = 4;
+			this.label2.Text = "G";
+			// 
+			// trkHSVG
+			// 
+			this.trkHSVG.Location = new System.Drawing.Point(22, 54);
+			this.trkHSVG.Maximum = 100;
+			this.trkHSVG.Name = "trkHSVG";
+			this.trkHSVG.Size = new System.Drawing.Size(632, 45);
+			this.trkHSVG.TabIndex = 3;
+			this.trkHSVG.TickFrequency = 10;
+			this.trkHSVG.ValueChanged += new System.EventHandler(this.trkHSVRGB_ValueChanged);
+			// 
+			// txtHSVR
+			// 
+			this.txtHSVR.Location = new System.Drawing.Point(660, 3);
+			this.txtHSVR.MaxLength = 3;
+			this.txtHSVR.Name = "txtHSVR";
+			this.txtHSVR.Size = new System.Drawing.Size(50, 19);
+			this.txtHSVR.TabIndex = 2;
+			this.txtHSVR.WordWrap = false;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(3, 3);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(13, 12);
+			this.label1.TabIndex = 1;
+			this.label1.Text = "R";
+			// 
+			// trkHSVR
+			// 
+			this.trkHSVR.Location = new System.Drawing.Point(22, 3);
+			this.trkHSVR.Maximum = 100;
+			this.trkHSVR.Name = "trkHSVR";
+			this.trkHSVR.Size = new System.Drawing.Size(632, 45);
+			this.trkHSVR.TabIndex = 0;
+			this.trkHSVR.TickFrequency = 10;
+			this.trkHSVR.ValueChanged += new System.EventHandler(this.trkHSVRGB_ValueChanged);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -152,6 +396,15 @@
 			this.GetPointLR.ResumeLayout(false);
 			this.GetCrossPoint.ResumeLayout(false);
 			this.GetAngle.ResumeLayout(false);
+			this.HSV.ResumeLayout(false);
+			this.pnlHSV.ResumeLayout(false);
+			this.pnlHSV.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVV)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVS)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVH)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVB)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVG)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.trkHSVR)).EndInit();
 			this.ResumeLayout(false);
 
 		}
@@ -167,6 +420,27 @@
 		private System.Windows.Forms.Panel pnlGetLength;
 		private System.Windows.Forms.TabPage GetAngle;
 		private System.Windows.Forms.Panel pnlGetAngle;
+		private System.Windows.Forms.TabPage HSV;
+		private System.Windows.Forms.Panel pnlHSV;
+		private System.Windows.Forms.TextBox txtHSVV;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.TrackBar trkHSVV;
+		private System.Windows.Forms.TextBox txtHSVS;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.TrackBar trkHSVS;
+		private System.Windows.Forms.TextBox txtHSVH;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.TrackBar trkHSVH;
+		private System.Windows.Forms.TextBox txtHSVB;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.TrackBar trkHSVB;
+		private System.Windows.Forms.TextBox txtHSVG;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.TrackBar trkHSVG;
+		private System.Windows.Forms.TextBox txtHSVR;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TrackBar trkHSVR;
+		private System.Windows.Forms.Label lblHSVBox;
 	}
 }
 

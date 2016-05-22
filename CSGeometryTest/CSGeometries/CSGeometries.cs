@@ -265,5 +265,25 @@ namespace CSGeometries
 			double rad = pAngle * (Math.PI / 180.0);
 			return rad;
 		}
+
+		/// <summary>
+		/// 飽和丸め
+		/// </summary>
+		/// <param name="pValue">値</param>
+		/// <param name="pMin">下限値</param>
+		/// <param name="pMax">上限値</param>
+		/// <returns>飽和処理後の値</returns>
+		/// <remarks>
+		/// pValueが上下限値内に収まるように調整する。
+		/// </remarks>
+		public static double Saturation(double pValue, double pMin = 0.0, double pMax = 1.0)
+		{
+			if (pValue < pMin) {
+				return pMin;
+			} else if (pValue > pMax) {
+				return pMax;
+			}
+			return pValue;
+		}
 	}
 }
