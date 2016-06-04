@@ -40,6 +40,7 @@ namespace CSGeometryTest
 
 		private Pen mPenBlack = new Pen(Color.Black);
 		private Pen mPenRed = new Pen(Color.Red);
+		private Pen mPenGray = new Pen(Color.Gray);
 
 		private SolidBrush mBrushBlack = new SolidBrush(Color.Black);
 
@@ -131,6 +132,14 @@ namespace CSGeometryTest
 		private void DrawLine(Graphics pGraphics, System.Windows.Point p1, System.Windows.Point p2, Pen pPen)
 		{
 			pGraphics.DrawLine(pPen, p1.ToFloat(), p2.ToFloat());
+		}
+
+		private void DrawRect(Graphics pGraphics, CSGeometries.Line pArea, Pen pPen)
+		{
+			pGraphics.DrawLine(pPen, pArea.X1, pArea.Y1, pArea.X2, pArea.Y1);
+			pGraphics.DrawLine(pPen, pArea.X2, pArea.Y1, pArea.X2, pArea.Y2);
+			pGraphics.DrawLine(pPen, pArea.X2, pArea.Y2, pArea.X1, pArea.Y2);
+			pGraphics.DrawLine(pPen, pArea.X1, pArea.Y2, pArea.X1, pArea.Y1);
 		}
 
 		private void MouseDownSub(MouseEventArgs e, Control pControl, PointID pID)
@@ -418,6 +427,31 @@ namespace CSGeometryTest
 													  this.trkHSVG.Value * 255 / 100,
 													  this.trkHSVB.Value * 255 / 100);
 			blHSVEventSkip = false;
+		}
+		#endregion
+
+		#region Clip
+		private void button1_Click(object sender, EventArgs e)
+		{
+			this.pnlClip.Invalidate();
+		}
+		private void pnlClip_Paint(object sender, PaintEventArgs e)
+		{
+			CSGeometries.Line areaDiagonalLine = new CSGeometries.Line(64, 64, this.pnlClip.ClientSize.Width - 64, pnlClip.ClientSize.Height - 64).MarshalMaxmin();
+
+			DrawRect(e.Graphics, areaDiagonalLine, this.mPenGray);
+
+			Random rnd = new Random();
+			for (int i = 0; i < 10; i++) {
+				CSGeometries.Line line = new CSGeometries.Line(rnd.Next(this.pnlClip.ClientSize.Width),
+																rnd.Next(this.pnlClip.ClientSize.Height),
+																rnd.Next(this.pnlClip.ClientSize.Width),
+																rnd.Next(this.pnlClip.ClientSize.Height));
+				e.Graphics.DrawLine(this.mPenGray, (int)line.X1, (int)line.Y1, (int)line.X2, (int)line.Y2);
+				if (CSGeometries.Geometry.Clip(areaDiagonalLine, line)) {
+					e.Graphics.DrawLine(this.mPenRed, (int)line.X1, (int)line.Y1, (int)line.X2, (int)line.Y2);
+				}
+			}
 		}
 		#endregion
 	}

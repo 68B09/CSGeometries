@@ -30,7 +30,7 @@ namespace CSGeometries
 	/// <summary>
 	/// 幾何計算クラス
 	/// </summary>
-	public class Geometry
+	public partial class Geometry
 	{
 		/// <summary>
 		/// 線分長取得

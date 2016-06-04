@@ -57,6 +57,9 @@
 			this.txtHSVR = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.trkHSVR = new System.Windows.Forms.TrackBar();
+			this.Clip = new System.Windows.Forms.TabPage();
+			this.pnlClip = new System.Windows.Forms.Panel();
+			this.button1 = new System.Windows.Forms.Button();
 			this.tab.SuspendLayout();
 			this.GetLength.SuspendLayout();
 			this.GetPointLR.SuspendLayout();
@@ -70,6 +73,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.trkHSVB)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trkHSVG)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.trkHSVR)).BeginInit();
+			this.Clip.SuspendLayout();
+			this.pnlClip.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// tab
@@ -82,6 +87,7 @@
 			this.tab.Controls.Add(this.GetCrossPoint);
 			this.tab.Controls.Add(this.GetAngle);
 			this.tab.Controls.Add(this.HSV);
+			this.tab.Controls.Add(this.Clip);
 			this.tab.Location = new System.Drawing.Point(12, 12);
 			this.tab.Name = "tab";
 			this.tab.SelectedIndex = 0;
@@ -383,6 +389,36 @@
 			this.trkHSVR.TickFrequency = 10;
 			this.trkHSVR.ValueChanged += new System.EventHandler(this.trkHSVRGB_ValueChanged);
 			// 
+			// Clip
+			// 
+			this.Clip.Controls.Add(this.pnlClip);
+			this.Clip.Location = new System.Drawing.Point(4, 22);
+			this.Clip.Name = "Clip";
+			this.Clip.Size = new System.Drawing.Size(713, 622);
+			this.Clip.TabIndex = 7;
+			this.Clip.Text = "Clip";
+			this.Clip.UseVisualStyleBackColor = true;
+			// 
+			// pnlClip
+			// 
+			this.pnlClip.Controls.Add(this.button1);
+			this.pnlClip.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.pnlClip.Location = new System.Drawing.Point(0, 0);
+			this.pnlClip.Name = "pnlClip";
+			this.pnlClip.Size = new System.Drawing.Size(713, 622);
+			this.pnlClip.TabIndex = 0;
+			this.pnlClip.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlClip_Paint);
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(3, 3);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(75, 23);
+			this.button1.TabIndex = 0;
+			this.button1.Text = "DRAW";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -405,6 +441,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.trkHSVB)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trkHSVG)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.trkHSVR)).EndInit();
+			this.Clip.ResumeLayout(false);
+			this.pnlClip.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -441,6 +479,9 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TrackBar trkHSVR;
 		private System.Windows.Forms.Label lblHSVBox;
+		private System.Windows.Forms.TabPage Clip;
+		private System.Windows.Forms.Panel pnlClip;
+		private System.Windows.Forms.Button button1;
 	}
 }
 
