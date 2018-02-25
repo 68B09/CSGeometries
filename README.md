@@ -27,11 +27,14 @@ CSGeometryTest が簡易テスト用のドライバになっていますので�
 ------
 ライセンスを適用するファイルにはライセンスについての記述があります。  
 The MIT License (MIT)  
-Copyright (c) 2016 ZZO  
+Copyright (c) 2016-2017 ZZO  
 see also 'LICENSE' file
 
 履歴
 -----
+2017/2/25 ZZO(68B09)  
+GCD(最大公約数取得)、LCM(最小公倍数取得)、PrimeFactorization(素因数分解)を追加。  
+  
 2016/6/4 ZZO(68B09)   
 線分クラス(Line)追加。  
 線分クリップ(Clip)追加。  

@@ -1,7 +1,7 @@
 ﻿/*
 The MIT License (MIT)
 
-Copyright (c) 2016 ZZO.
+Copyright (c) 2016-2017 ZZO.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -284,6 +284,108 @@ namespace CSGeometries
 				return pMax;
 			}
 			return pValue;
+		}
+
+		/// <summary>
+		/// 最大公約数取得
+		/// </summary>
+		/// <param name="p1">値1</param>
+		/// <param name="p2">値2</param>
+		/// <returns>最大公約数</returns>
+		/// <remarks>
+		/// p1及びp2の最大公約数を返す。
+		/// p1＜0 OR p2＜0 の場合は例外を起こす。
+		/// p1==0 OR p2==0 の場合は0を返す。
+		/// </remarks>
+		public static long GCD(long p1, long p2)
+		{
+			if ((p1 < 0) || (p2 < 0)) {
+				throw new ArgumentOutOfRangeException("負数が指定された");
+			}
+
+			if ((p1 == 0) || (p2 == 0)) {
+				return 0;
+			}
+
+			if (p1 < p2) {
+				return GCD(p2, p1);
+			}
+
+			while (p2 != 0) {
+				long remain = p1 % p2;
+				p1 = p2;
+				p2 = remain;
+			}
+
+			return p1;
+		}
+
+		/// <summary>
+		/// 最小公倍数取得
+		/// </summary>
+		/// <param name="p1">値1</param>
+		/// <param name="p2">値2</param>
+		/// <returns>最小公倍数</returns>
+		/// <remarks>
+		/// p1及びp2の最小公倍数を返す。
+		/// p1＜0 OR p2＜0 の場合は例外を起こす。
+		/// p1==0 OR p2==0 の場合は0を返す。
+		/// </remarks>
+		public static long LCM(long p1, long p2)
+		{
+			if ((p1 < 0) || (p2 < 0)) {
+				throw new ArgumentOutOfRangeException("負数が指定された");
+			}
+
+			if ((p1 == 0) || (p2 == 0)) {
+				return 0;
+			}
+
+			return (p1 * p2) / GCD(p1, p2);
+		}
+
+		/// <summary>
+		/// 素因数分解
+		/// </summary>
+		/// <param name="pValue">値</param>
+		/// <returns>素数リスト</returns>
+		/// <remarks>
+		/// pValueを素因数分解した結果を返す。
+		/// pValueが1未満の場合は例外を起こす。
+		/// 素数リストには1以上の素数が格納される。
+		/// 素数リストには同一値の素数が複数格納される場合がある。
+		/// </remarks>
+		public static System.Collections.Generic.List<long> PrimeFactorization(long pValue)
+		{
+			if (pValue < 1) {
+				throw new ArgumentOutOfRangeException("1未満の値が指定された");
+			}
+
+			System.Collections.Generic.List<long> list = new System.Collections.Generic.List<long>();
+
+			if (pValue == 1) {
+				list.Add(1);
+			} else {
+				long n = 2;
+				while ((pValue % n) == 0) {
+					list.Add(n);
+					pValue /= n;
+				}
+
+				n = 3;
+				while (n < pValue) {
+					while ((pValue % n) == 0) {
+						list.Add(n);
+						pValue /= n;
+					}
+					n += 2;
+				}
+				if (pValue != 1) {
+					list.Add(pValue);
+				}
+			}
+
+			return list;
 		}
 	}
 }
