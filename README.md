@@ -32,7 +32,7 @@ see also 'LICENSE' file
 
 履歴
 -----
-2017/2/25 ZZO(68B09)  
+2018/2/25 ZZO(68B09)  
 GCD(最大公約数取得)、LCM(最小公倍数取得)、PrimeFactorization(素因数分解)を追加。  
   
 2016/6/4 ZZO(68B09)   
