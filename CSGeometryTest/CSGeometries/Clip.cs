@@ -73,6 +73,35 @@ namespace CSGeometries
 		}
 
 		/// <summary>
+		/// クリップ判定フラグ作成(最小・最大座標指定)
+		/// </summary>
+		/// <param name="pClipPointMin">最小座標(左下座標)</param>
+		/// <param name="pClipPointMax">最大座標(右上座標)</param>
+		/// <param name="pPoint">判定対象座票</param>
+		/// <returns>クリップ判定フラグ</returns>
+		/// <remarks>
+		/// 判定対象座標が矩形領域内・外のどこにあるかを判定する。
+		/// </remarks>
+		public static ClipFlags CreateClipFlag(System.Windows.Point pClipPointMin, System.Windows.Point pClipPointMax, System.Windows.Point pPoint)
+		{
+			ClipFlags flag = ClipFlags.EMPTY;
+
+			if (pPoint.X < pClipPointMin.X) {
+				flag |= ClipFlags.UNDERX;
+			} else if (pPoint.X > pClipPointMax.X) {
+				flag |= ClipFlags.OVERX;
+			}
+
+			if (pPoint.Y < pClipPointMin.Y) {
+				flag |= ClipFlags.UNDERY;
+			} else if (pPoint.Y > pClipPointMax.Y) {
+				flag |= ClipFlags.OVERY;
+			}
+
+			return flag;
+		}
+
+		/// <summary>
 		/// 線分矩形領域クリップ
 		/// </summary>
 		/// <param name="pAreaDiagonalLine">矩形領域の対角線</param>

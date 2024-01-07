@@ -40,8 +40,21 @@ namespace CSGeometries
 		/// <returns>長さ</returns>
 		public static double GetLength(System.Windows.Point p1, System.Windows.Point p2)
 		{
-			double dx = p1.X - p2.X;
-			double dy = p1.Y - p2.Y;
+			return GetLength(p1.X, p1.Y, p2.X, p2.Y);
+		}
+
+		/// <summary>
+		/// 線分長取得
+		/// </summary>
+		/// <param name="pX1">座標点1X</param>
+		/// <param name="pY1">座標点1Y</param>
+		/// <param name="pX2">座標点2X</param>
+		/// <param name="pY2">座標点2Y</param>
+		/// <returns>長さ</returns>
+		public static double GetLength(double pX1, double pY1, double pX2, double pY2)
+		{
+			double dx = pX1 - pX2;
+			double dy = pY1 - pY2;
 			double ans = Math.Sqrt((dx * dx) + (dy * dy));
 			return ans;
 		}
@@ -119,12 +132,12 @@ namespace CSGeometries
 		/// <summary>
 		/// 矩形内判定
 		/// </summary>
-		/// <param name="p1">線分座標点1</param>
-		/// <param name="p2">線分座標点2</param>
+		/// <param name="p1">矩形対角座標点1</param>
+		/// <param name="p2">矩形対角座標点2</param>
 		/// <param name="pPoint">判定座標点</param>
 		/// <returns>true=矩形内、false=外</returns>
 		/// <remarks>
-		/// 線分 p1-p2 で示される矩形内に点pPointが入っているか否かを判定する。
+		/// 対角線 p1-p2 で示される矩形内に点pPointが入っているか否かを判定する。
 		/// </remarks>
 		public static bool InRect(System.Windows.Point p1, System.Windows.Point p2, System.Windows.Point pPoint)
 		{
@@ -139,6 +152,33 @@ namespace CSGeometries
 			}
 
 			return false;
+		}
+
+		/// <summary>
+		/// 矩形内判定
+		/// </summary>
+		/// <param name="p1">矩形対角座標点1</param>
+		/// <param name="p2">矩形対角座標点2</param>
+		/// <param name="pPoints">判定座標群</param>
+		/// <returns>true=すべて矩形内、false=外</returns>
+		/// <remarks>
+		/// 対角線 p1-p2 で示される矩形内に点群pPointsが入っているか否かを判定する。
+		/// </remarks>
+		public static bool InRect(System.Windows.Point p1, System.Windows.Point p2, params System.Windows.Point[] pPoints)
+		{
+			double xmin = Math.Min(p1.X, p2.X);
+			double xmax = Math.Max(p1.X, p2.X);
+			double ymin = Math.Min(p1.Y, p2.Y);
+			double ymax = Math.Max(p1.Y, p2.Y);
+
+			for (int i = 0; i < pPoints.Length; i++) {
+				if ((pPoints[i].X < xmin) || (pPoints[i].X > xmax) ||
+					(pPoints[i].Y < ymin) || (pPoints[i].Y > ymax)) {
+					return false;
+				}
+			}
+
+			return true;
 		}
 
 		/// <summary>
@@ -164,6 +204,25 @@ namespace CSGeometries
 
 			double length = ((dx * (pPoint.Y - p1.Y)) - (dy * (pPoint.X - p1.X))) / len;
 			return length;
+		}
+
+		/// <summary>
+		/// 垂線長取得(線分上判定)
+		/// </summary>
+		/// <param name="p1">線分座標点1</param>
+		/// <param name="p2">線分座標点2</param>
+		/// <param name="pPoint">判定座標点</param>
+		/// <returns>長さ。交点が線分上に無い場合はnull</returns>
+		/// <remarks>
+		/// 点 pPoint から線分 p1-p2 への垂線長を返す。
+		/// </remarks>
+		public static double? GetPerpendicularlineLengthOnLine(System.Windows.Point p1, System.Windows.Point p2, System.Windows.Point pPoint)
+		{
+			Point? crossPoint = GetPerpendicularlinePointOnLine(p1, p2, pPoint);
+			if (crossPoint == null) {
+				return null;
+			}
+			return GetLength(pPoint, crossPoint.Value);
 		}
 
 		/// <summary>
@@ -195,6 +254,44 @@ namespace CSGeometries
 		}
 
 		/// <summary>
+		/// 垂直交点取得(線分上判定)
+		/// </summary>
+		/// <param name="p1">直線座標点1</param>
+		/// <param name="p2">直線座標点2</param>
+		/// <param name="pPoint">垂線基準座標点</param>
+		/// <returns>交点座標。交点が線分上に無い場合はnull</returns>
+		/// <remarks>
+		/// GetPerpendicularlinePointで求めた交点が線分上であれば交点座標を、線分上に無ければnullを返す。
+		/// </remarks>
+		public static System.Windows.Point? GetPerpendicularlinePointOnLine(System.Windows.Point p1, System.Windows.Point p2, System.Windows.Point pPoint)
+		{
+			System.Windows.Point ans = GetPerpendicularlinePoint(p1, p2, pPoint);
+			MarshalMaxmin(ref p1, ref p2);
+			if ((ans.X < p1.X) || (ans.X > p2.X) || (ans.Y < p1.Y) || (ans.Y > p2.Y)) {
+				return null;
+			}
+			return ans;
+		}
+
+		/// <summary>
+		/// 範囲内丸め
+		/// </summary>
+		/// <param name="pValue">値</param>
+		/// <param name="pMin">許容最小値</param>
+		/// <param name="pMax">許容最大値</param>
+		/// <returns></returns>
+		public static double GetInRange(double pValue, double pMin, double pMax)
+		{
+			if (pValue < pMin) {
+				return pMin;
+			} else if (pValue > pMax) {
+				return pMax;
+			} else {
+				return pValue;
+			}
+		}
+
+		/// <summary>
 		/// 最小・最大値整合
 		/// </summary>
 		/// <param name="pMin">最小値</param>
@@ -211,6 +308,40 @@ namespace CSGeometries
 
 			pMin = new System.Windows.Point(xmin, ymin);
 			pMax = new System.Windows.Point(xmax, ymax);
+		}
+
+		/// <summary>
+		/// 最小最大座標点取得
+		/// </summary>
+		/// <param name="pPoints">座標群</param>
+		/// <param name="pMin">最小座標</param>
+		/// <param name="pMax">最大座標</param>
+		/// <remarks>
+		/// 座標群 sPoints 中から最小・最大座標を取得する。
+		/// </remarks>
+		public static void GetMaxmin(System.Windows.Point[] pPoints, out System.Windows.Point pMin, out System.Windows.Point pMax)
+		{
+			pMin = pMax = new Point(0, 0);
+
+			for (int i = 0; i < pPoints.Length; i++) {
+				if (i == 0) {
+					pMin = pMax = pPoints[i];
+				} else {
+					if (pMin.X > pPoints[i].X) {
+						pMin.X = pPoints[i].X;
+					}
+					if (pMin.Y > pPoints[i].Y) {
+						pMin.Y = pPoints[i].Y;
+					}
+
+					if (pMax.X < pPoints[i].X) {
+						pMax.X = pPoints[i].X;
+					}
+					if (pMax.Y < pPoints[i].Y) {
+						pMax.Y = pPoints[i].Y;
+					}
+				}
+			}
 		}
 
 		/// <summary>
@@ -386,6 +517,23 @@ namespace CSGeometries
 			}
 
 			return list;
+		}
+
+		/// <summary>
+		/// 対角座標から4点を作成
+		/// </summary>
+		/// <param name="p1">対角座標1</param>
+		/// <param name="p2">対角座標2</param>
+		/// <param name="pTable">矩形座標</param>
+		/// <remarks>
+		/// 対角座標から矩形を構成する4点を作成する。
+		/// </remarks>
+		public static void Rect2PointTo4Point(Point p1, Point p2, Point[] pTable)
+		{
+			pTable[0] = p1;
+			pTable[1] = new Point(p2.X, p1.Y);
+			pTable[2] = p2;
+			pTable[3] = new Point(p1.X, p2.Y);
 		}
 	}
 }
