@@ -1,4 +1,4 @@
-﻿# 【注意】(2024/1/8) 本クラスのメンテナンスは終了しました。後継の<a href="https://github.com/68B09/CSLibrary" target="_blank">CSLibrary.CSGeometry</a>の使用を検討してください。  
+# 【注意】(2024/1/8) 本クラスのメンテナンスは終了しました。後継の<a href="https://github.com/68B09/CSLibrary" target="_blank">CSLibrary.CSGeometry</a>の使用を検討してください。  
 
 # CSGeometries
 C#用幾何計算クラス
