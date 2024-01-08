@@ -1,4 +1,4 @@
-﻿# 【注意】本クラスのメンテナンスは終了しました。後継の<a href="https://github.com/68B09/CSLibrary" target="_blank">CSLibrary.CSGeometry</a>の使用を検討してください。
+﻿# 【注意】(2024/1/8) 本クラスのメンテナンスは終了しました。後継の<a href="https://github.com/68B09/CSLibrary" target="_blank">CSLibrary.CSGeometry</a>の使用を検討してください。  
 
 # CSGeometries
 C#用幾何計算クラス
@@ -34,6 +34,9 @@ see also 'LICENSE' file
 
 履歴
 -----
+2024/1/8 ZZO(68B09)  
+メンテナンス終了の連絡。  
+  
 2018/2/25 ZZO(68B09)  
 GCD(最大公約数取得)、LCM(最小公倍数取得)、PrimeFactorization(素因数分解)を追加。  
   
