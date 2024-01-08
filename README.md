@@ -1,4 +1,9 @@
-﻿# CSGeometries
+﻿<span style="color: #ff0000">
+本クラスのメンテナンスは終了しました。<br>
+後継の<a href="https://github.com/68B09/CSLibrary" target="_blank">CSLibrary.CSGeometry</a>の使用を検討してください。
+</span>
+
+# CSGeometries
 C#用幾何計算クラス
 ======================
 線分の長さや線交差座標等を求めるための幾何計算クラスや、RGB-HSV相互変換などのカラーモデル変換クラスを実装しています。
